@@ -1,0 +1,81 @@
+============================================================
+RetailPulse â€” Data Cleaning Pipeline
+Run at: 2026-09-22 06:28:59
+============================================================
+
+============================================================
+  1. Customers
+============================================================
+  Raw rows: 15,045
+  gender: filled 300 missing with 'Male'
+  age: filled 225 missing with median (45)
+  registration_date: dropped 1 unparseable rows
+  Duplicates dropped: 45
+  Clean rows: 14,999
+
+============================================================
+  2. Products
+============================================================
+  Raw rows: 600
+  brand: filled 6 missing with 'Unknown'
+  supplier: filled 3 missing with 'Unknown Supplier'
+  selling_price: fixed 3 invalid values with median (15840.00)
+  Duplicates dropped: 0
+  Clean rows: 600
+
+============================================================
+  3. Stores
+============================================================
+  Raw rows: 40
+  opening_date: filled 1 missing with median date
+  Clean rows: 40
+
+============================================================
+  4. Orders
+============================================================
+  Raw rows: 150,300
+  payment_method: filled 750 missing with 'UPI'
+  order_date: dropped 0 unparseable rows
+  Duplicates dropped: 300
+  Clean rows: 150,000
+
+============================================================
+  5. Order Details
+============================================================
+  Raw rows: 315,994
+  discount: filled 3160 missing with 0
+  quantity: dropped 3 rows with quantity â‰¤ 0
+  unit_price: capped outliers (103,302,000.00 â†’ 124,600.00)
+  Duplicates dropped: 0
+  Clean rows: 315,991
+
+============================================================
+  6. Inventory Transactions
+============================================================
+  Raw rows: 120,000
+  quantity: dropped 240 rows with missing quantity
+  transaction_date: dropped 0 unparseable rows
+  Duplicates dropped: 0
+  Clean rows: 119,760
+
+============================================================
+  Saving cleaned files
+============================================================
+  Saved: customers_clean.csv  (14,999 rows)
+  Saved: products_clean.csv  (600 rows)
+  Saved: stores_clean.csv  (40 rows)
+  Saved: orders_clean.csv  (150,000 rows)
+  Saved: order_details_clean.csv  (315,991 rows)
+  Saved: inventory_transactions_clean.csv  (119,760 rows)
+
+============================================================
+  Summary
+============================================================
+  Customers:                   14,999
+  Products:                       600
+  Stores:                          40
+  Orders:                     150,000
+  Order Details:              315,991
+  Inventory Transactions:     119,760
+
+Next step: python python/eda.py
